@@ -1309,11 +1309,69 @@
 
     <!-- Header Start -->
     <div id='header-wrapper' class='row' >
-      <h1>
-        <a href="http://blog.morepeoplepayless.com/" id="logo">
-                  <i class="foundicon-people"></i><span class="morepeople">morepeople</span><span class="payless">payless</span><span class="morepeople"> blog</span>
-              </a>
-      </h1>
+      <b:section class='header twelve columns' id='header' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Header1' locked='true' title='This is the header (Header)' type='Header'>
+        
+        <b:includable id='title'>
+          <b:if cond='data:blog.url == data:blog.homepageUrl'>
+            <data:title/>
+          <b:else/>
+            <a expr:href='data:blog.homepageUrl'><data:title/></a>
+          </b:if>
+        </b:includable>
+
+        <b:includable id='description'>
+          <div class='descriptionwrapper'>
+            <p class='description'><span><data:description/></span></p>
+          </div>
+        </b:includable>
+        <b:includable id='main'>
+
+          <b:if cond='data:useImage'>
+            <b:if cond='data:imagePlacement == &quot;REPLACE&quot;'>
+              <!--Show just the image, no text-->
+              <div id='header-inner'>
+                <a expr:href='data:blog.homepageUrl' style='display: block'>
+                  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+                </a>
+              </div>
+            <b:else/>
+              <!--Show image as background to text-->
+              <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-repeat: no-repeat; &quot;                      + &quot;width: &quot; + data:width + &quot;px; &quot;                      + &quot;height: &quot; + data:height + &quot;px;&quot;' id='header-inner'>
+                <div class='titlewrapper' style='background: transparent'>
+                  <h1 class='title' style='background: transparent; border-width: 0px'>
+                    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+                      <data:title/>
+                    <b:else/>
+                      <a expr:href='data:blog.homepageUrl'><data:title/></a>
+                    </b:if>
+                  </h1>
+                </div>
+                <div class='descriptionwrapper'>
+                  <p class='description'><span><data:description/></span></p>
+                </div>
+              </div>
+            </b:if>
+          <b:else/>
+            <!--No header image -->
+            <div id='header-inner'>
+              <div class='titlewrapper'>
+                <h1 class='title'>
+                  <b:if cond='data:blog.url == data:blog.homepageUrl'>
+                    <data:title/>
+                  <b:else/>
+                    <a expr:href='data:blog.homepageUrl'><data:title/></a>
+                  </b:if>
+                </h1>
+              </div>
+              <div class='descriptionwrapper'>
+                <p class='description'><span><data:description/></span></p>
+              </div>
+            </div>
+          </b:if>
+        </b:includable>
+        </b:widget>
+      </b:section>
     </div>
     <!-- Header End -->
 
