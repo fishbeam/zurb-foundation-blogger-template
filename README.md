@@ -1,2 +1,1 @@
-zurb-foundation-blogger-template
-================================
+This is a simple blogger template using Zurb foundation 3.2
